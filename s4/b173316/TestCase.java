@@ -55,7 +55,8 @@ public class TestCase {
             myObject.setSpace("Hi Ho Hi Ho".getBytes());
             freq = myObject.frequency();
             System.out.print("\"H\" in \"Hi Ho Hi Ho\" appears "+freq+" times. ");
-            if(4 == freq) { System.out.println("OK"); } else {System.out.println("WRONG"); }
+            //ターゲット未指定なので-1ですか？
+            if(-1 == freq) { System.out.println("OK"); } else {System.out.println("WRONG"); }
         }
         catch(Exception e) {
             System.out.println("Exception occurred: STOP");
@@ -71,7 +72,8 @@ public class TestCase {
             myObject.setTarget("".getBytes());
             freq = myObject.frequency();
             System.out.print("\"H\" in \"Hi Ho Hi Ho\" appears "+freq+" times. ");
-            if(4 == freq) { System.out.println("OK"); } else {System.out.println("WRONG"); }
+            //ターゲットの長さは-1ですか？
+            if(-1 == freq) { System.out.println("OK"); } else {System.out.println("WRONG"); }
         }
         catch(Exception e) {
             System.out.println("Exception occurred: STOP");
@@ -86,7 +88,8 @@ public class TestCase {
             myObject.setTarget("H".getBytes());
             freq = myObject.frequency();
             System.out.print("\"H\" in \"Hi Ho Hi Ho\" appears "+freq+" times. ");
-            if(4 == freq) { System.out.println("OK"); } else {System.out.println("WRONG"); }
+            //スペースが未設定なので0ですか？
+            if(0 == freq) { System.out.println("OK"); } else {System.out.println("WRONG"); }
         }
         catch(Exception e) {
             System.out.println("Exception occurred: STOP");
@@ -102,7 +105,8 @@ public class TestCase {
             myObject.setTarget("H".getBytes());
             freq = myObject.frequency();
             System.out.print("\"H\" in \"Hi Ho Hi Ho\" appears "+freq+" times. ");
-            if(4 == freq) { System.out.println("OK"); } else {System.out.println("WRONG"); }
+            //スペースの長さが0なので0が返ってきてますか？
+            if(0 == freq) { System.out.println("OK"); } else {System.out.println("WRONG"); }
         }
         catch(Exception e) {
             System.out.println("Exception occurred: STOP");
@@ -138,6 +142,7 @@ public class TestCase {
             System.out.println("checking s4.b173316.InformationEstimator");
             myObject = new s4.b173316.InformationEstimator();
             myObject.setSpace("3210321001230123".getBytes());
+            //ターゲットが未設定なのでvalue=0ですか？
             value = myObject.estimation();
             System.out.println(">0 "+value);
             value = myObject.estimation();
@@ -146,6 +151,7 @@ public class TestCase {
             System.out.println(">0123 "+value);
             value = myObject.estimation();
             System.out.println(">00 "+value);
+            if(0.0 == value) { System.out.println("OK"); } else {System.out.println("WRONG"); }
         }
         catch(Exception e) {
             System.out.println("Exception occurred: STOP");
@@ -159,6 +165,7 @@ public class TestCase {
             myObject = new s4.b173316.InformationEstimator();
             myObject.setSpace("3210321001230123".getBytes());
             myObject.setTarget("".getBytes());
+            //ターゲットの長さが0なのでvalue=0ですか？
             value = myObject.estimation();
             System.out.println(">0 "+value);
             myObject.setTarget("".getBytes());
@@ -170,6 +177,8 @@ public class TestCase {
             myObject.setTarget("".getBytes());
             value = myObject.estimation();
             System.out.println(">00 "+value);
+            System.out.println(value);
+            if(0.0 == value) { System.out.println("OK"); } else {System.out.println("WRONG"); }
         }
         catch(Exception e) {
             System.out.println("Exception occurred: STOP");
