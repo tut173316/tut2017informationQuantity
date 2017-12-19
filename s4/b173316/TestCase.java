@@ -183,6 +183,55 @@ public class TestCase {
         catch(Exception e) {
             System.out.println("Exception occurred: STOP");
         }
+        
+        //スペースが指定されてない場合
+        try {
+            InformationEstimatorInterface myObject;
+            double value;
+            System.out.println("checking s4.b173316.InformationEstimator");
+            myObject = new s4.b173316.InformationEstimator();
+            myObject.setTarget("0".getBytes());
+            value = myObject.estimation();
+            System.out.println(">0 "+value);
+            myObject.setTarget("01".getBytes());
+            value = myObject.estimation();
+            System.out.println(">01 "+value);
+            myObject.setTarget("0123".getBytes());
+            value = myObject.estimation();
+            System.out.println(">0123 "+value);
+            myObject.setTarget("00".getBytes());
+            value = myObject.estimation();
+            System.out.println(">00 "+value);
+            if(Double.MAX_VALUE == value) { System.out.println("OK"); } else {System.out.println("WRONG"); }
+        }
+        catch(Exception e) {
+            System.out.println("Exception occurred: STOP");
+        }
+        
+        //スペースの長さが
+        try {
+            InformationEstimatorInterface myObject;
+            double value;
+            System.out.println("checking s4.b173316.InformationEstimator");
+            myObject = new s4.b173316.InformationEstimator();
+            myObject.setSpace("".getBytes());
+            myObject.setTarget("0".getBytes());
+            value = myObject.estimation();
+            System.out.println(">0 "+value);
+            myObject.setTarget("01".getBytes());
+            value = myObject.estimation();
+            System.out.println(">01 "+value);
+            myObject.setTarget("0123".getBytes());
+            value = myObject.estimation();
+            System.out.println(">0123 "+value);
+            myObject.setTarget("00".getBytes());
+            value = myObject.estimation();
+            System.out.println(">00 "+value);
+            if(Double.MAX_VALUE == value) { System.out.println("OK"); } else {System.out.println("WRONG"); }
+        }
+        catch(Exception e) {
+            System.out.println("Exception occurred: STOP");
+        }
     }
-}	    
+}
 	    
