@@ -52,6 +52,14 @@ public class InformationEstimator implements InformationEstimatorInterface{
         else if(myTarget.length == 0){
             value = 0;
         }
+        //スペースが未指定の場合
+        else if(mySpace == null){
+            return value;
+        }
+        //スペースの長さが0の場合
+        else if(mySpace.length == 0){
+            return value;
+        }
         else{
             boolean [] partition = new boolean[myTarget.length+1];
             int np;
