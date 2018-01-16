@@ -37,10 +37,10 @@ public class TestCase {
             System.out.println("checking s4.b173316.Frequencer");
             myObject = new s4.b173316.Frequencer();
             myObject.setSpace("Hi Ho Hi Ho".getBytes());
-            myObject.setTarget("H".getBytes());
+            myObject.setTarget("Ho".getBytes());
             freq = myObject.frequency();
-            System.out.print("\"H\" in \"Hi Ho Hi Ho\" appears "+freq+" times. ");
-            if(4 == freq) { System.out.println("OK"); } else {System.out.println("WRONG"); }
+            System.out.print("\"Ho\" in \"Hi Ho Hi Ho\" appears "+freq+" times. ");
+            if(2 == freq) { System.out.println("OK"); } else {System.out.println("WRONG"); }
         }
         catch(Exception e) {
             System.out.println("Exception occurred: STOP");
