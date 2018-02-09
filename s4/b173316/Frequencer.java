@@ -179,6 +179,12 @@ public class Frequencer implements FrequencerInterface{
     }
     
     private int targetCompare(int i, int start, int end) {
+        if(i <= -1){    //参照外なら
+            return -1;
+        }
+        else if(i >= suffixArray.length){
+            return 1;
+        }
         int si = mySpace.length - suffixArray[i];
         int sj = end -start;
         int s = mySpace.length;
@@ -210,6 +216,7 @@ public class Frequencer implements FrequencerInterface{
         int middle = (top + bottom) / 2;
         if(top >= bottom){
             if(targetCompare(middle,start,end) == -1){
+                System.out.println("test");
                 return 0;   //ターゲットが見つからない場合
             }
             else{
@@ -263,7 +270,7 @@ public class Frequencer implements FrequencerInterface{
     
     public int Binary_Search_End(int top, int bottom, int start, int end){
         int middle = (top + bottom) / 2;
-        if(top >= bottom && middle == suffixArray.length){
+        if(top >= bottom && middle == suffixArray.length-1){
             if(targetCompare(middle,start,end) == 0){   //middleが末尾&ターゲットも末尾の場合
                 return middle+1;
             }
@@ -275,6 +282,9 @@ public class Frequencer implements FrequencerInterface{
             if(targetCompare(middle,start,end) == 1){
                 if(targetCompare(middle-1,start,end) == 0){
                     return middle;
+                }
+                else if(targetCompare(middle-1,start,end) == -1){
+                    return 0;
                 }
                 else{
                     return Binary_Search_End(top, middle-1, start, end);
@@ -345,7 +355,7 @@ public class Frequencer implements FrequencerInterface{
         try {
             frequencerObject = new Frequencer();
             frequencerObject.setSpace("Hi Ho Hi Ho".getBytes());
-            frequencerObject.setTarget("H".getBytes());
+            frequencerObject.setTarget("guug".getBytes());
             int result = frequencerObject.frequency();
             System.out.print("Freq = "+ result+" ");
             if(4 == result) { System.out.println("OK"); }
