@@ -22,22 +22,26 @@ public class InformationEstimator implements InformationEstimatorInterface{
     FrequencerInterface myFrequencer;  // Object for counting frequency
 
     byte [] subBytes(byte [] x, int start, int end) {
-	// corresponding to substring of String for  byte[] ,
-	// It is not implement in class library because internal structure of byte[] requires copy.
-	byte [] result = new byte[end - start];
-	for(int i = 0; i<end - start; i++) { result[i] = x[start + i]; };
-	return result;
+        // corresponding to substring of String for  byte[] ,
+        // It is not implement in class library because internal structure of byte[] requires copy.
+        byte [] result = new byte[end - start];
+        for(int i = 0; i<end - start; i++) {
+            result[i] = x[start + i];
+        };
+        return result;
     }
 
     // IQ: information quantity for a count,  -log2(count/sizeof(space))
     double iq(int freq) {
-	return  - Math.log10((double) freq / (double) mySpace.length)/ Math.log10((double) 2.0);
+        return  - Math.log10((double) freq / (double) mySpace.length)/ Math.log10((double) 2.0);
     }
 
-    public void setTarget(byte [] target) { myTarget = target;}
+    public void setTarget(byte [] target) {
+        myTarget = target;
+    }
     public void setSpace(byte []space) { 
-	myFrequencer = new Frequencer();
-	mySpace = space; myFrequencer.setSpace(space); 
+        myFrequencer = new Frequencer();
+        mySpace = space; myFrequencer.setSpace(space); 
     }
 
     public double estimation(){
@@ -77,20 +81,20 @@ public class InformationEstimator implements InformationEstimatorInterface{
 
                 // Compute Information Quantity for the partition, in "value1"
                 // value1 = IQ(#"ab")+IQ(#"cde")+IQ(#"fg") for the above example
-                    double value1 = (double) 0.0;
+                double value1 = (double) 0.0;
                 int end = 0;;
                 int start = end;
                 while(start<myTarget.length) {
-                // System.out.write(myTarget[end]);
-                end++;;
-                while(partition[end] == false) { 
                     // System.out.write(myTarget[end]);
-                    end++;
-                }
-                // System.out.print("("+start+","+end+")");
-                myFrequencer.setTarget(subBytes(myTarget, start, end));
-                value1 = value1 + iq(myFrequencer.frequency());
-                start = end;
+                    end++;;
+                    while(partition[end] == false) {
+                        // System.out.write(myTarget[end]);
+                        end++;
+                    }
+                    // System.out.print("("+start+","+end+")");
+                    myFrequencer.setTarget(subBytes(myTarget, start, end));
+                    value1 = value1 + iq(myFrequencer.frequency());
+                    start = end;
                 }
                 // System.out.println(" "+ value1);
 
