@@ -31,14 +31,14 @@ public interface InformationEstimatorInterface{
 
 public class TestCase {
     public static void main(String[] args) {
-        /*
+        
         try {
             FrequencerInterface  myObject;
             int freq;
             System.out.println("checking s4.b173316.Frequencer");
             myObject = new s4.b173316.Frequencer();
             myObject.setSpace("lhiushreiuhfkgvjhrdiuiozhihdjhfhsoihdkvhoishkdnvklhorvfsnvklfjoivh".getBytes());
-            myObject.setTarget("ih".getBytes());
+            myObject.setTarget("".getBytes());
             freq = myObject.frequency();
             System.out.print("\"Ho\" in \"Hi Ho Hi Ho\" appears "+freq+" times. ");
             if(2 == freq) { System.out.println("OK"); } else {System.out.println("WRONG"); }
@@ -76,7 +76,7 @@ public class TestCase {
         catch(Exception e) {
             System.out.println("Exception occurred: STOP");
         }
-        */
+        
         
         
         try {
@@ -85,7 +85,30 @@ public class TestCase {
             System.out.println("checking s4.b173316.InformationEstimator");
             myObject = new s4.b173316.InformationEstimator();
             myObject.setSpace("3210321001230123".getBytes());
-            myObject.setTarget("4".getBytes());
+            myObject.setTarget("".getBytes());
+            value = myObject.estimation();
+            System.out.println(">0 "+value);
+            myObject.setTarget("01".getBytes());
+            value = myObject.estimation();
+            System.out.println(">01 "+value);
+            myObject.setTarget("0123".getBytes());
+            value = myObject.estimation();
+            System.out.println(">0123 "+value);
+            myObject.setTarget("00".getBytes());
+            value = myObject.estimation();
+            System.out.println(">00 "+value);
+        }
+        catch(Exception e) {
+            System.out.println("Exception occurred: STOP");
+        }
+        
+        try {
+            InformationEstimatorInterface myObject;
+            double value;
+            System.out.println("checking s4.b173316.InformationEstimator");
+            myObject = new s4.b173316.InformationEstimator();
+            myObject.setSpace("".getBytes());
+            myObject.setTarget("".getBytes());
             value = myObject.estimation();
             System.out.println(">0 "+value);
             myObject.setTarget("01".getBytes());

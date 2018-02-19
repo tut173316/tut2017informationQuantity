@@ -240,9 +240,11 @@ public class Frequencer implements FrequencerInterface{
         int first = subByteStartIndex(start,end);
         int last1 = subByteEndIndex(start, end);
         // inspection code
+        /*
          for(int k=start;k<end;k++) {
              System.out.write(myTarget[k]);
          }
+         */
          //System.out.printf(": first=%d last1=%d\n", first, last1);
         return last1 - first;
     }
